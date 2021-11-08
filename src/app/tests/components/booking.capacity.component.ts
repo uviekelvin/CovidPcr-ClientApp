@@ -33,6 +33,9 @@ export class BookingCapacityComponent implements OnInit {
     });
   }
   ngOnInit(): void {
+    this.populateBookingCapacity();
+  }
+  populateBookingCapacity() {
     this.testService.getBookingCapacity(this.query).subscribe((res) => {
       this.bookingCapacity = res.data;
     });
@@ -50,6 +53,7 @@ export class BookingCapacityComponent implements OnInit {
       this.modalRef.hide();
       this.form.reset();
       this.form.markAsPristine();
+      this.populateBookingCapacity();
     });
   }
   getLabs() {

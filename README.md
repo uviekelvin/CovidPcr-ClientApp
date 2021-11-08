@@ -1,4 +1,4 @@
-# CovidPcr FronttEnd
+# CovidPcr FrontEnd
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
 ensure your have the version installed globally on your machine.

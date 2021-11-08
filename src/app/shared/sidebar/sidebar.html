@@ -1,0 +1,35 @@
+<nav>
+  <ul class="sidebar-menu" data-widget="tree">
+    <li class="active">
+      <a [routerLinkActive]="['active']" [routerLink]="['dashboard']"
+        ><i class="bx bx-home-heart"></i><span>Dashboard</span></a
+      >
+    </li>
+    <li>
+      <a [routerLinkActive]="['active']" [routerLink]="['test/bookings']"
+        ><i class="bx bx-world"></i><span>Bookings</span></a
+      >
+    </li>
+
+    <li>
+      <a [routerLinkActive]="['active']" [routerLink]="['test/bookingcapacity']"
+        ><i class="bx bx-calendar"></i><span>Booking Capacity</span></a
+      >
+    </li>
+    <li>
+      <a [routerLinkActive]="['active']" [routerLink]="['test/schedule']"
+        ><i class="bx bx-calendar"></i><span>Book a Test</span></a
+      >
+    </li>
+    <li>
+      <a [routerLinkActive]="['active']" [routerLink]="['test/viewresult']"
+        ><i class="bx bx-calendar"></i><span>View my Test Result</span></a
+      >
+    </li>
+    <li>
+      <a [routerLinkActive]="['active']" [routerLink]="['test']"
+        ><i class="bx bx-map"></i><span>Test Results</span></a
+      >
+    </li>
+  </ul>
+</nav>

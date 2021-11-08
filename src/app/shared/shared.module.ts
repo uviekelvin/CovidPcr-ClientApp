@@ -8,25 +8,48 @@ import { KeysPipe } from './pipes/enum.pipe';
 import { ReadMoreComponent } from './components/readmore.component';
 
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { ShareButtonsModule, ShareDirectiveModule } from 'ngx-sharebuttons';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ShortNumberPipe } from './pipes/ShortNumberPipe';
 
 //import { TextInputComponent } from './components/text.component';
-import { HasPermissionDirective } from './directives/user-permission.directive';
-import { HasRoleDirective } from './directives/user-role.directive';
-
+import { SideBarComponent } from './sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
+import { TextInputComponent } from './components/test-input.component';
+import { ConfirmDialogComponent } from './components/confirm.dialog.component';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 @NgModule({
-  imports: [CommonModule, ReactiveFormsModule, ModalModule, NgxSpinnerModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ModalModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    RouterModule,
+    NgxSpinnerModule,
+    ToastrModule.forRoot(),
+  ],
+  declarations: [
+    KeysPipe,
+    ReadMoreComponent,
+    SideBarComponent,
+    TextInputComponent,
+    ConfirmDialogComponent,
+  ],
   exports: [
     CommonModule,
     KeysPipe,
     ReadMoreComponent,
     ReactiveFormsModule,
     ModalModule,
+    FormsModule,
+    RouterModule,
+    BsDatepickerModule,
     NgxSpinnerModule,
+    SideBarComponent,
+    ToastrModule,
+    TextInputComponent,
+    ConfirmDialogComponent,
   ],
-  declarations: [KeysPipe, ReadMoreComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SharedModule {}

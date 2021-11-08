@@ -1,4 +1,3 @@
-import { Config } from './../../../assets/config/config';
 import { ApiResponse } from './../models/ApiResponse';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
@@ -8,7 +7,6 @@ export class ApiService {
   baseUrl: string;
   apiurl: string;
   constructor(protected httpClient: HttpClient, protected url: string = '') {
-    this.baseUrl = Config.settings.apiServer.BaseUrl;
     this.apiurl = this.url;
   }
   public post<T>(item: any, url: string): Observable<ApiResponse<T>> {

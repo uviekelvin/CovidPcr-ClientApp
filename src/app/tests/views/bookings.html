@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-12">
+    <div class="card box-margin">
+      <div class="card-body">
+        <h4 class="card-title">Bookings</h4>
+        <div class="list-view table-responsive" id="list-view">
+          <table class="list-view__table display table">
+            <thead class="list-view__head">
+              <tr>
+                <th>Patient</th>
+                <th>Test</th>
+                <th>Lab</th>
+                <th>Location</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+
+            <tbody class="list-view__body">
+              <tr *ngFor="let booking of bookings">
+                <td>{{booking.firstName}},{{booking.surName}}</td>
+                <td>{{booking.testType}}</td>
+                <td>{{booking.lab}}</td>
+                <td>{{booking.location}}</td>
+                <td>{{booking.scheduledDate | date:'mediumDate'}}</td>
+                <td>{{bookingStatus[booking.status]}}</td>
+                <td>
+                  <div
+                    class="btn-group"
+                    role="group"
+                    aria-label="Basic example"
+                  >
+                    <!-- <button type="button" class="btn btn-primary">View</button> -->
+                    <button
+                      type="button"
+                      class="btn btn-primary btn-sm"
+                      (click)="openAddTestModal(template,booking)"
+                      [disabled]="booking.status!=bookingStatus.Booked"
+                    >
+                      Add Result
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-danger btn-sm"
+                      (click)="cancelBooking(booking)"
+                      [disabled]="booking.status===bookingStatus.Completed ||
+                      booking.status===bookingStatus.Cancelled"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Add Test Result</h4>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      aria-label="Close"
+      (click)="modalRef?.hide()"
+    >
+      <span aria-hidden="true" class="visually-hidden">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form" (ngSubmit)="addTest()">
+      <div class="form-group">
+        <label>Result Type</label>
+        <select class="form-control" formControlName="resultType">
+          <option value="">Select Result Type</option>
+          <option value="1">Positive</option>
+          <option value="2">Negative</option>
+        </select>
+      </div>
+      <text-input formControlName="remarks" [label]="'Remarks'"></text-input>
+      <button type="submit" class="btn btn-primary" [disabled]="!form.valid">
+        Add Test
+      </button>
+    </form>
+  </div>
+</ng-template>

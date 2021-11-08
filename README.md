@@ -3,6 +3,10 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.6.
 ensure your have the version installed globally on your machine.
 
+## Project Dependencies
+run `ng install` to install all dependencies used in the project
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

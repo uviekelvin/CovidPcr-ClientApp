@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ensure your have the version installed globally on your machine.
 
 ## Project Dependencies
-run `ng install` to install all dependencies used in the project
+run `npm install` to install all dependencies used in the project
 
 
 ## Development server

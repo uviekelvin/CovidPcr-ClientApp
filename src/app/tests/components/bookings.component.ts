@@ -34,7 +34,6 @@ export class BookingsComponent implements OnInit {
     private confirmService: ConfirmService,
     private datepipe: DatePipe
   ) {
-    this.startDate.setMonth(this.startDate.getMonth() - 1);
     this.form = new FormGroup({
       resultType: new FormControl('', [Validators.required]),
       remarks: new FormControl(''),

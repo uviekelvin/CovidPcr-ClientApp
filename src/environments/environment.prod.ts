@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://localhost:44334',
+  baseUrl: 'https://sandbox.moolahvest.com/CovidPcr',
 };

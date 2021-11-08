@@ -11,6 +11,6 @@ export interface BookingVm {
   testType: string;
   lab: string;
   location: string;
-  status: BookingStatus;
+  status: string;
   testResult: TestResultVm;
 }

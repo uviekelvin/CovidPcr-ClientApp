@@ -17,6 +17,7 @@ import { RouterModule } from '@angular/router';
 import { TextInputComponent } from './components/test-input.component';
 import { ConfirmDialogComponent } from './components/confirm.dialog.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { PaginationComponent } from './components/pagination.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -33,6 +34,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     ReadMoreComponent,
     SideBarComponent,
     TextInputComponent,
+    PaginationComponent,
     ConfirmDialogComponent,
   ],
   exports: [
@@ -46,6 +48,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     BsDatepickerModule,
     NgxSpinnerModule,
     SideBarComponent,
+    PaginationComponent,
     ToastrModule,
     TextInputComponent,
     ConfirmDialogComponent,

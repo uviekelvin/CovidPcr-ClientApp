@@ -1,8 +1,18 @@
 <div class="row">
   <div class="col-12">
     <div class="card box-margin">
-      <div class="card-body">
+      <div class="card-header">
         <h4 class="card-title">All Test Results</h4>
+        <div class="pull-right">
+          <button
+            class="btn btn-primary"
+            (click)="openFilterModal(filterTemplate)"
+          >
+            Filter
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
         <div class="list-view table-responsive" id="list-view">
           <table class="list-view__table display table">
             <thead class="list-view__head">
@@ -27,6 +37,13 @@
               </tr>
             </tbody>
           </table>
+          <div class="pull-right">
+            <pagination
+              [total-items]="totalCount"
+              [page-size]="query.pageSize"
+              (page-changed)="onPageChange($event)"
+            ></pagination>
+          </div>
         </div>
       </div>
     </div>
@@ -60,5 +77,52 @@
         Add Test
       </button>
     </form>
+  </div>
+</ng-template>
+
+<ng-template #filterTemplate>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h6 class="modal-title" id="modal-title-notification">Filter By:</h6>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+        (click)="bsModalRef.hide()"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #f="ngForm" (ngSubmit)="onFilterChange()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>Select Result Type</label>
+              <select
+                class="form-control"
+                [(ngModel)]="query.resultType"
+                name="resultType"
+              >
+                <option value="1">Positive</option>
+                <option value="2">Negative</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="!f.valid" class="btn btn-primary">
+          Apply Filter
+        </button>
+        <button
+          type="button"
+          (click)="resetFilter()"
+          class="btn btn-outline-primary"
+        >
+          Reset
+        </button>
+      </form>
+    </div>
   </div>
 </ng-template>

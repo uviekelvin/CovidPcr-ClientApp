@@ -48,7 +48,7 @@ export class ScheduleTestComponent implements OnInit {
   }
   scheduleTest() {
     this.testService.scheduleTest(this.form.value).subscribe((res) => {
-      this.router.navigate(['../test']);
+      this.router.navigate(['../test/bookings']);
     });
   }
 }

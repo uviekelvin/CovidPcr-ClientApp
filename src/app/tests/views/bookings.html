@@ -2,7 +2,17 @@
   <div class="col-12">
     <div class="card box-margin">
       <div class="card-body">
-        <h4 class="card-title">Bookings</h4>
+        <div class="card-header">
+          <h4 class="card-title">Bookings</h4>
+          <div class="pull-right">
+            <button
+              class="btn btn-primary"
+              (click)="openFilterModal(filterTemplate)"
+            >
+              Filter
+            </button>
+          </div>
+        </div>
         <div class="list-view table-responsive" id="list-view">
           <table class="list-view__table display table">
             <thead class="list-view__head">
@@ -13,6 +23,7 @@
                 <th>Location</th>
                 <th>Date</th>
                 <th>Status</th>
+                <th>Booking Code</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -24,7 +35,8 @@
                 <td>{{booking.lab}}</td>
                 <td>{{booking.location}}</td>
                 <td>{{booking.scheduledDate | date:'mediumDate'}}</td>
-                <td>{{bookingStatus[booking.status]}}</td>
+                <td>{{booking.status}}</td>
+                <td>{{booking.bookingCode}}</td>
                 <td>
                   <div
                     class="btn-group"
@@ -54,6 +66,13 @@
               </tr>
             </tbody>
           </table>
+          <div class="pull-right">
+            <pagination
+              [total-items]="totalCount"
+              [page-size]="query.pageSize"
+              (page-changed)="onPageChange($event)"
+            ></pagination>
+          </div>
         </div>
       </div>
     </div>
@@ -87,5 +106,82 @@
         Add Test
       </button>
     </form>
+  </div>
+</ng-template>
+
+<ng-template #filterTemplate>
+  <div class="modal-content">
+    <div class="modal-header">
+      <h6 class="modal-title" id="modal-title-notification">Filter By:</h6>
+      <button
+        type="button"
+        class="close"
+        data-dismiss="modal"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form #f="ngForm" (ngSubmit)="onFilterChange()">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label>From</label>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="startDate"
+                  #sd="ngModel"
+                  name="startDate"
+                  #dp="bsDatepicker"
+                  required
+                  bsDatepicker
+                  [bsValue]="startDate"
+                />
+                <div class="input-group-append">
+                  <span class="input-group-text" (click)="dp.toggle()"
+                    ><i class="fa fa-calendar"></i
+                  ></span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label>To</label>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                [(ngModel)]="endDate"
+                #ed="ngModel"
+                name="endDate"
+                #dp1="bsDatepicker"
+                bsDatepicker
+                [bsValue]="endDate"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text" (click)="dp1.toggle()"
+                  ><i class="fa fa-calendar"></i
+                ></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" [disabled]="!f.valid" class="btn btn-primary">
+          Apply Filter
+        </button>
+        <button
+          type="button"
+          (click)="resetFilter()"
+          class="btn btn-outline-primary"
+        >
+          Reset
+        </button>
+      </form>
+    </div>
   </div>
 </ng-template>

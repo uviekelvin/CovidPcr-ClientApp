@@ -48,7 +48,7 @@
                       type="button"
                       class="btn btn-primary btn-sm"
                       (click)="openAddTestModal(template,booking)"
-                      [disabled]="booking.status!=bookingStatus.Booked"
+                      [disabled]="booking.status!='Booked'"
                     >
                       Add Result
                     </button>

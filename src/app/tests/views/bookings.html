@@ -56,8 +56,8 @@
                       type="button"
                       class="btn btn-danger btn-sm"
                       (click)="cancelBooking(booking)"
-                      [disabled]="booking.status===bookingStatus.Completed ||
-                      booking.status===bookingStatus.Cancelled"
+                      [disabled]="booking.status==='Completed' ||
+                      booking.status==='Cancelled'"
                     >
                       Cancel
                     </button>

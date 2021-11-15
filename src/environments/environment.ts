@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://sandbox.moolahvest.com/CovidPcr',
+  baseUrl: 'https://dev.moolahvest.com/CovidPcr',
 };
 
 /*
